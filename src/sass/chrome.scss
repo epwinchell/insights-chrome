@@ -1,159 +1,208 @@
-$pf-global--enable-reset: 'true';
-$pf-global--image-path: './assets/images/';
+$pf-v5-global--enable-reset: 'true';
 
-@import 'node_modules/@patternfly/patternfly/patternfly-base.scss';
+@import '~@patternfly/patternfly/sass-utilities/_all';
+@import '~@redhat-cloud-services/frontend-components/FilterHooks/tagFilterHook.scss';
 
-// Components
-@import 'node_modules/@patternfly/patternfly/components/Toolbar/toolbar.scss';
-@import 'node_modules/@patternfly/patternfly/components/Page/page.scss';
-@import 'node_modules/@patternfly/patternfly/components/BackgroundImage/background-image.scss';
-@import 'node_modules/@patternfly/patternfly/components/Nav/nav.scss';
-@import 'node_modules/@patternfly/patternfly/components/Button/button.scss';
-@import 'node_modules/@patternfly/patternfly/components/Dropdown/dropdown.scss';
-@import 'node_modules/@patternfly/patternfly/components/Avatar/avatar.scss';
-@import 'node_modules/@patternfly/patternfly/components/Title/title.scss';
-@import 'node_modules/@patternfly/patternfly/components/AboutModalBox/about-modal-box.scss';
-@import 'node_modules/@patternfly/patternfly/components/ModalBox/modal-box.scss';
-@import 'node_modules/@patternfly/patternfly/components/Backdrop/backdrop.scss';
-@import 'node_modules/@patternfly/patternfly/components/Switch/switch.scss';
-@import 'node_modules/@patternfly/patternfly/components/Alert/alert.scss';
-
-// Layouts
-@import 'node_modules/@patternfly/patternfly/layouts/Split/split.scss';
-@import 'node_modules/@patternfly/patternfly/layouts/Flex/flex.scss';
-@import 'node_modules/@patternfly/patternfly/layouts/Bullseye/bullseye.scss';
-
-@import 'node_modules/@redhat-cloud-services/frontend-components/components/spinner.css';
-@import 'node_modules/@redhat-cloud-services/frontend-components/components/skeleton.css';
-
-// Accessibility
-@import 'node_modules/@patternfly/patternfly/utilities/Accessibility/accessibility.scss';
-@import 'node_modules/@patternfly/patternfly/utilities/Spacing/spacing.scss';
-
-@import 'helpers.scss';
-
-@import 'partials/_footer.scss';
-@import 'partials/_tempNav.scss';
+// TODO: Bring these quick starts overrides into the lib instead 
+.pfext-page-layout__title {
+  margin-top: 0;
+  padding-top: 23px;
+}
+.pfext-page-layout__content.pfext-is-dark {
+  background: unset;
+}
 
 body {
-    position: relative;
+  position: relative;
 }
 
 aside {
-    overflow: auto !important;
+  overflow: auto !important;
 }
 
-.pf-c-about-modal-box__logo {
-    display: none;
+.quickstarts-open ._pendo-badge {
+  display:none !important;
+} 
+
+#chrome-app-render-root {
+  height: 100vh;
 }
 
-#no-access.pf-c-page__main {
-    display: none;
-}
-
-.pf-c-page__header-tools[widget-type="InsightsToolbar"] {
-    .pf-l-toolbar, .pf-c-toolbar, .pf-l-toolbar__group, .pf-c-toolbar__group {
-        display: flex;
-    }
-}
-
-// Page temp styles
-.pf-c-page {
-  --pf-c-page__sidebar--Transition:                 all 500ms cubic-bezier(.42, 0, .58, 1);
-  --pf-m-emphasis--FontSize:                        var(--pf-global--FontSize--xl);
-}
-
-// Page layout styles
-.pf-c-drawer__content, #root.pf-c-page__main, #temp.pf-c-page__main, #no-access.pf-c-page__main {
-    height: 100%;
-}
-
-// Page root background color
-.pf-c-page__main {
-    &#root, &#no-access {
-        background: var(--pf-c-page__main-section--BackgroundColor);
-    }
-}
-
-// Landing page logout alert
-.pf-c-alert.ins-c-alert__logout{
-    position: absolute;
-    top: var(--pf-c-page__header--MinHeight);
-    right: var(--pf-c-page__header-tools--MarginRight);
-}
-
-// Header
-.pf-c-page__header {
-    overflow: visible;
-    .ins-c-dropdown-item__stack {
-        white-space: nowrap;
-        * { color: var(--pf-c-dropdown__menu-item--disabled--Color); }
-    }
-
-    .ins-c-dropdown-item__stack--header,
-    .ins-c-dropdown-item__stack--subValue {
-        font-size: var(--pf-global--FontSize--xs);
-    }
-
-    .ins-c-dropdown-item__stack--subValue { padding-top: var(--pf-global--spacer--xs); }
-
-    .pf-c-page__header-brand-link img { @include rem('height', 30px); }
-    .pf-c-page__header-brand-toggle svg {
-        @include rem('height', 21px);
-        @include rem('width', 21px);
-    }
-
-    .pf-c-page__header-tools .pf-c-avatar {
-        height: var(--pf-global--FontSize--4xl);
-    }
-}
-
-// Brand
-.pf-c-brand {
-  fill: #fff;
-  min-width: 200px;
-  
-  @media screen and (min-width: $pf-global--breakpoint--md) {
-    width: 100%;
-    min-width: auto;
+.pf-v5-c-page.chr-c-page {
+  .pf-v5-c-page__sidebar {
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: var(--pf-v5-global--palette--black-800);
+  }
+  &__hasBanner {
+    grid-template-areas: "banner banner"
+                         "header header"
+                         "nav main";
   }
 }
 
+#no-access.pf-v5-c-page__main {
+    display: none;
+}
+
+// Page temp styles
+.pf-v5-c-page {
+  --pf-m-emphasis--FontSize: var(--pf-v5-global--FontSize--xl);
+}
+
+// Page root background color
+.pf-v5-c-page__main {
+  &#root, &#no-access {
+    background: var(--pf-v5-v5-c-page__main-section--BackgroundColor);
+  }
+}
+
+// temp replacement for non-working PF4 variables
+.pf-c-page__main-section {
+  // padding: var(--pf-c-page__main-section--PaddingTop) var(--pf-c-page__main-section--PaddingRight) var(--pf-c-page__main-section--PaddingBottom) var(--pf-c-page__main-section--PaddingLeft);
+  padding: 24px;
+}
+.pf-c-page__main-section.pf-m-light {
+  // --pf-c-page__main-section--BackgroundColor: var(--pf-c-page__main-section--m-light--BackgroundColor);
+  --pf-c-page__main-section--BackgroundColor: #fff;
+}
+
+// Landing page logout alert
+.pf-v5-c-alert.chr-c-alert {
+  position: absolute;
+  top: var(--pf-v5-v5-c-page__header--MinHeight);
+  right: var(--pf-v5-v5-c-page__header-tools--MarginRight);
+}
+
 // Page sidebar
-.pf-c-page__sidebar {
-    grid-row-end: 4;
+.pf-v5-c-page__sidebar {
+  grid-row-end: 4;
 }
 
-// Page footer
-.ins-c-footer {
-    grid-column-start: 1;
+.chr-render {
+  display: flex;
+  flex-direction: column;
+  > main {
+      flex-grow: 1;
+  }
+}
 
-    @media screen and (min-width: $pf-global--breakpoint--md) {
-        grid-column-start: 2;
+/** We need some adjustments to the minimal height of the default layout with the new footer.
+* The footer is tall and during the module loading process, it create "rubber banding" effect as the loading
+* elements change during different stages. 
+*/
+@media screen and (min-width : $pf-v5-global--breakpoint--2xl) {
+  .chr-scope__default-layout {
+    // we do not have PF variables for the header height unfortunately
+    min-height: calc(100vh - 70px /** the size of the masthead on extra large screens */);
+  }
+}
+
+
+@media screen and (min-width : $pf-v5-global--breakpoint--xl) {
+  .chr-scope__default-layout {
+    min-height: calc(100vh - 118px /** the size of the masthead on large screens */);
+  };
+}
+
+@media only screen and (max-width: $pf-v5-global--breakpoint--md) {
+  .ins-m-hide-on-md {display: none;}
+}
+
+@media only screen and (max-width: $pf-v5-global--breakpoint--sm) {
+  .ins-m-hide-on-sm {display: none;}
+
+  .ins-c-table-empty-state.pf-m-grid-md.pf-v5-c-table,
+  .ins-c-table-empty-state.pf-m-grid-lg.pf-v5-c-table {
+      [data-label] {
+          --pf-v5-c-table--cell--hidden-visible--Display: 0;
+      }
+      tr:first-of-type {
+          > td::before { 
+              display: none; 
+          }
+      }
+  }
+}
+
+/**
+* Cookies banner overrides
+*/
+#truste-consent-track {
+  /**
+  * has to be set because of PF page overlaps the banner
+  */
+  z-index: 19001;
+  position: fixed;
+  bottom: 0;
+  padding-left: var(--pf-global--spacer--xl);
+  padding-right: var(--pf-global--spacer--xl);
+  width: 100%;
+
+  @media only screen and (max-width: $pf-v5-global--breakpoint--lg) {
+    .truste-banner {
+      display: flex;
+      flex-direction: column;
     }
+  }
 }
 
-// Loading
-.ins-l-page__header--loading {
-    .ins-c-skeleton { @include rem('height', 28px); }
+
+// centers modals when a quick start drawer is open
+.pfext-quick-start-drawer__body {
+    .pf-v5-c-backdrop {
+      --pf-v5-c-backdrop--Position: absolute;
+    }
+  }
+
+// remove float from restart button so it's not obscured by pendo or the va badge
+.pfext-quick-start-footer__restartbtn {
+  float: none;
+}
+  
+// fix quickstarts drawer overflow for long quickstart/helptopic content
+#chrome-entry {
+  height: 100vh;
 }
 
-.ins-c-page__header-brand--loading {
-    .pf-c-button.pf-m-plain { top: 2px; }
+.chr-c-favorite-trigger {
+  cursor: pointer;
+  .chr-c-icon-star {
+    --pf-v5-c-icon__content--Color: var(--pf-v5-global--Color--light-100);
+  }
+  &:hover {
+    .pf-v5-c-icon {
+      --pf-v5-c-icon__content--Color: var(--pf-v5-global--icon--Color--light);
+      &:hover {
+        --pf-v5-c-icon__content--Color: var(--pf-v5-global--icon--Color--dark);
+      }
+    }
+    .pf-v5-c-icon-external-link, .pf-v5-c-icon-external-link:hover {
+      --pf-v5-c-icon__content--Color: var(--pf-v5-global--active-color--100);
+    }
+  }
+}
+.chr-c-favorite-trigger.chr-c-icon-favorited {
+  .pf-v5-c-icon {
+    --pf-v5-c-icon__content--Color: var(--pf-v5-global--palette--gold-400);
+    &:hover {
+      --pf-v5-c-icon__content--Color: var(--pf-v5-global--palette--gold-500);
+      .chr-c-icon-external-link, .chr-c-icon-external-link:hover {
+        --pf-v5-c-icon__content--Color: var(--pf-v5-global--active-color--100);
+      }
+    }
+  }
 }
 
-section.ins-c-app-switcher--loading {
-    padding: calc(16px + var(--pf-global--spacer--sm)) 24px;
-    margin-top: 7px;
-    border-bottom: 3px solid #3c3f42;
+.chr-c-link-favorite-card { //trigger not needed here
+  .pf-v5-c-icon {
+    --pf-v5-c-icon__content--Color: var(--pf-v5-global--palette--gold-400);
+    &:hover {
+      --pf-v5-c-icon__content--Color: var(--pf-v5-global--palette--gold-500);
+      .chr-c-icon-external-link, .chr-c-icon-external-link:hover {
+        --pf-v5-c-icon__content--Color: var(--pf-v5-global--active-color--100);
+      }
+    }
+  }
 }
 
-.pf-m-user-skeleton {
-    .ins-c-skeleton { width: 75px; }
-    .pf-c-dropdown__toggle-icon { height: 1em; }
-}
-
-// Pen testing
-.ins-c-pen-test {
-    border-top: 3px solid #A18FFF;
-}
